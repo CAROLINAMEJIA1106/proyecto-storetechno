@@ -1,0 +1,77 @@
+<nav class="navbar navbar-expand-lg navBar">
+    <div class="containerImg">
+        <a href="/" class="navbar-brand d-flex align-items-center">
+            <img class="logo" src="https://previews.123rf.com/images/fixer00/fixer001304/fixer00130400001/19108529-color-splash-sobre-fondo-blanco-ilustraci%C3%B3n.jpg" alt="Img logo store" width="80" height="80" align="left"/>
+        </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse elementosNav" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto elementos">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" th:if="${session.usuariosession != null}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Productos
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                    <li><a class="dropdown-item" sec:authorize = "hasRole('ADMIN')" th:href="@{/producto/registrar}">Crear Producto</a></li>
+                    <li><hr class="dropdown-divider"></li>
+
+                    <li><a class="dropdown-item" th:href="@{/producto/lista}">Listar Productos</a></li>
+                </ul>
+            </li>
+
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" th:if="${session.usuariosession != null}" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Fabricantes
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                    <li><a class="dropdown-item" sec:authorize = "hasRole('ADMIN')" th:href="@{/fabricante/registrar}">Crear Fabricante</a></li>
+                    <li><hr class="dropdown-divider"></li>
+
+                    <li><a class="dropdown-item" th:href="@{/fabricante/lista}">Listar Fabricantes</a></li>
+                </ul>
+            </li>
+
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" th:if="${session.usuariosession != null}" sec:authorize = "hasRole('ADMIN')" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Usuarios
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                    <li><a class="dropdown-item" th:href="@{/admin/usuarios}">Listar Usuarios</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" th:if="${session.usuariosession != null}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Perfil
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" th:href="@{/perfil}" >Editar Perfil</a></li>
+                    <li><hr class="dropdown-divider"></li>
+
+                    <li><a class="dropdown-item" href="/logout" >Cerrar Sesión</a></li>
+                </ul>
+
+
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link " th:if="${session.usuariosession == null}" href="/registrar" id="navbarDropdown" role="button" aria-expanded="false">
+                    Regístrate Aquí!
+                </a>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " th:if="${session.usuariosession == null}" href="/login" id="navbarDropdown" role="button" aria-expanded="false">
+                    LOGIN!
+                </a>
+
+            </li>
+        </ul>
+    </div>
+</nav>
